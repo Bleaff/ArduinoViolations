@@ -6,23 +6,25 @@
 #include <ESPAsyncWebServer.h>
 #include "Settings.hpp"
 
-
-class ISettingsServer
+class InitializeSettingsServer
 {
 public:
-  Settings settings;
-  ISettingsServer(int port, const char *ssid, const char *password);
-  ISettingsServer(const ISettingsServer &settings);
-  void start(void);
-  void stop(void);
-private:
-  int port = 0;
+  int status = 0;
   const char *ssid;
   const char *password;
+  Settings settings;
+  InitializeSettingsServer(int port, const char *ssid, const char *password);
+  InitializeSettingsServer(const InitializeSettingsServer &settings);
+  void start(void);
+
+private:
+  int port = 0;
   TaskHandle_t Task1;
+  AsyncWebServer server;
   void start_monitor_thread(void);
-  void monitor_network_connection(void *params);
+  static void monitor_network_connection(void *params);
+  String generate_html_page();
   String get_wifi_option();
-}
+};
 
 #endif
