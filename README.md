@@ -40,7 +40,7 @@ void setup() {
 
 ```
 ArduinoViolations-main/
-├── ArduinoViolations.ino               # Пример использования
+├── ArduinoSettingsServer.ino               # Пример использования
 ├── InitializeSettingsServer.cpp/hpp    # Модуль инициализации
 ├── Settings.cpp/hpp                    # Хранение и работа с настройками
 ```
